@@ -1,0 +1,1 @@
+'alembic init' and add the db url in the generated alembic.ini file
