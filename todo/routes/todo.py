@@ -1,8 +1,8 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, Path,status
 from sqlalchemy.orm import Session
-from database import SessionLocal
-from models import TodoModel, Todos
+from ..database import SessionLocal
+from ..models import TodoModel, Todos
 from .auth import verifytoken
 
 
@@ -20,6 +20,7 @@ def get_db():
 
 db_dependency = Annotated[Session,Depends(get_db)]
 user_dependency = Annotated[dict, Depends(verifytoken)]
+
 
 @router.get("/")
 async def readAll(user:user_dependency,db:db_dependency):
